@@ -14,6 +14,13 @@ class Quiz extends Component {
         super(props);
         this.state = {quiz_position: 1};
     }
+
+    showNextQuestion (){
+       this.setState(prevState => ({
+           quiz_position: prevState.quiz_position + 1,
+       }))
+    }
+
     //Render is just a function. Can run normal JS in it...
     render () {
         //Gets called each time rendered
@@ -28,6 +35,7 @@ class Quiz extends Component {
                 <div>
                     <QuizQuestion
                         quiz_question={quizData.quiz_questions[this.state.quiz_position -1]}
+                        showNextQuestionHandler={this.showNextQuestion.bind(this)}
                     />
                 </div>
             )
