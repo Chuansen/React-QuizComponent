@@ -21,13 +21,17 @@ class Quiz extends Component {
        }))
     }
 
+    handleResetClick () {
+        this.setState({quiz_position: 1,})
+    }
+
     //Render is just a function. Can run normal JS in it...
     render () {
         //Gets called each time rendered
         const isQuizEnd = this.state.quiz_position -1 === quizData.quiz_questions.length;
         if (isQuizEnd) {
             return(
-                <QuizEnd style={{display: true ? "" : "none"}}/>
+                <QuizEnd resetClickHandler={this.handleResetClick.bind(this)} style={{display: true ? "" : "none"}}/>
             )
         }
         else {
